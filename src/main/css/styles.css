@@ -1,8 +1,8 @@
-#today{
-    -fx-text-fill-color: #478FC4;
+#today {
+    -fx-text-fill : #478FC4;
 }
 
-#scroll {
+.scroll-pane {
     -fx-background: #ddf5ee;
     -fx-border-color : #5F9EA0;
 }
