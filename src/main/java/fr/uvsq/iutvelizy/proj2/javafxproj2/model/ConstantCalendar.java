@@ -1,4 +1,4 @@
-package src.fr.uvsq.iut_velizy.date;
+package fr.uvsq.iutvelizy.proj2.javafxproj2.model;
 
 public interface ConstantCalendar {
     final String [] DAY_WEEK = {"Lundi" , "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"};

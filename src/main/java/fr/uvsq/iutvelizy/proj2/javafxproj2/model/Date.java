@@ -1,6 +1,6 @@
-package src.fr.uvsq.iut_velizy.date;
+package fr.uvsq.iutvelizy.proj2.javafxproj2.model;
 
-import src.fr.uvsq.iut_velizy.utils.*;
+import fr.uvsq.iutvelizy.proj2.javafxproj2.utils.*;
 
 public class Date {
     protected int day;
