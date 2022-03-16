@@ -40,6 +40,10 @@ public class DateCalendar extends Date
         }
     }
 
+    public int getDay(){
+        return dayOfWeek;
+    }
+
     public String toString(){
         return super.toString() + " " +  DAY_WEEK[dayOfWeek - 1];
     }

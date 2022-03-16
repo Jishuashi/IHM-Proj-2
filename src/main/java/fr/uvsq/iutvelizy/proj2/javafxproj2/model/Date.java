@@ -148,6 +148,18 @@ public class Date {
         return new Date(lNextDay, lNextMonth, lNextYear);
     }
 
+    public int getDayMonth(){
+        return day;
+    }
+
+    public int getMonth(){
+        return month;
+    }
+
+    public int getYear(){
+        return year;
+    }
+
     public Date yesterDate(){
         int lPrevDay = day;
         int lPrevMonth = month;
