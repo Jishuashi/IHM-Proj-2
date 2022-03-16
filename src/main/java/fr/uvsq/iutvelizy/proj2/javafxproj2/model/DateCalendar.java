@@ -26,7 +26,7 @@ public class DateCalendar extends Date
         
         Calendar date = Calendar.getInstance();
 
-        date.set(pYear, pMonth - 1, pDay);
+        date.set(pYear, (pMonth - 1), pDay);
 
         year =  date.get(Calendar.YEAR);
         month = date.get(Calendar.MONTH) + 1;
@@ -34,6 +34,8 @@ public class DateCalendar extends Date
         dayOfWeek = date.get(Calendar.DAY_OF_WEEK);
 
         dayOfWeek--;
+
+        System.out.println(dayOfWeek);
 
         if(dayOfWeek == -1){
             dayOfWeek = 6;
@@ -45,7 +47,10 @@ public class DateCalendar extends Date
     }
 
     public String toString(){
-        return super.toString() + " " +  DAY_WEEK[dayOfWeek - 1];
+        if(dayOfWeek -1 == -1){
+            dayOfWeek = 7;
+        }
+        return DAY_WEEK[dayOfWeek - 1] + super.toString() + "\n";
     }
     
     public DateCalendar tommorowDate(){

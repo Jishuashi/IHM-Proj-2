@@ -21,7 +21,7 @@ public class DateCalendarMonth {
         }
         date = new DateCalendar (2,month,year);
         indexDay = indexDay % 7 ;
-        while (date.getMonth () == month) {
+        while (date.getMonth() == month) {
             while(indexDay<7) {
                 treeSetDate.add(date);
                 date = date.tommorowDate();
@@ -36,7 +36,7 @@ public class DateCalendarMonth {
     }
 
     public String toString () {
-        return treeSetDate.size() + " " +treeSetDate.toString();
+        return treeSetDate.size() + " " + treeSetDate.toString();
     }
 
     public int getMonth() {

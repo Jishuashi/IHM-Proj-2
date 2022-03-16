@@ -6,8 +6,8 @@ import javafx.stage.Stage;
 public class ApplicationMain extends Application {
     public void start(Stage stage){
         stage.setTitle("Hello JavaFX");
-        stage.setWidth(400);
-        stage.setHeight(150);
+        stage.setWidth(800);
+        stage.setHeight(600);
         stage.centerOnScreen();
         stage.show();
     }
