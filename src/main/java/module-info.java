@@ -5,5 +5,6 @@ module fr.uvsq.iutvelizy.proj2.javafxproj2 {
     requires org.controlsfx.controls;
 
     opens fr.uvsq.iutvelizy.proj2.javafxproj2 to javafx.fxml;
-    exports fr.uvsq.iutvelizy.proj2.javafxproj2;
+    exports fr.uvsq.iutvelizy.proj2.javafxproj2.view;
+    exports fr.uvsq.iutvelizy.proj2.javafxproj2.model;
 }
