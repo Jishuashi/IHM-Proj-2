@@ -1,5 +1,6 @@
 package fr.uvsq.iutvelizy.proj2.javafxproj2.model;
 
+import java.security.cert.TrustAnchor;
 import java.util.Calendar;
 
 public class DateCalendar extends Date
@@ -20,7 +21,6 @@ public class DateCalendar extends Date
         }
     }
 
-    
 
     public DateCalendar(int pDay, int pMonth, int pYear){
         
@@ -44,6 +44,16 @@ public class DateCalendar extends Date
 
     public int getDay(){
         return dayOfWeek;
+    }
+
+    public Boolean isToday(){
+        if(compareTo(new DateCalendar()) == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+
     }
 
     public String toString(){

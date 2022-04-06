@@ -160,21 +160,6 @@ public class Date {
         return year;
     }
 
-    public static Date [ ] getDateMonth(int pMonth, int pYear){
-        int lMonth = pMonth;
-        int lYear = pYear;
-        Date firstDate = new Date(1, pMonth, pYear);
-        Date [ ] returnDate = new Date[lastDayMonth(lMonth, lYear)];
-
-        returnDate[0] = firstDate;
-
-        for(int i = 1; i < lastDayMonth(lMonth, lYear); i++){
-            returnDate[i] = returnDate[i-1].tomorrowDate();
-        }
-
-        return returnDate;
-    }
-
     public Date yesterDate(){
         int lPrevDay = day;
         int lPrevMonth = month;

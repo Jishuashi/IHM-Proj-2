@@ -1,51 +1,74 @@
 package fr.uvsq.iutvelizy.proj2.javafxproj2.view;
 
+import fr.uvsq.iutvelizy.proj2.javafxproj2.model.ConstantCalendar;
 import fr.uvsq.iutvelizy.proj2.javafxproj2.model.DateCalendar;
 import fr.uvsq.iutvelizy.proj2.javafxproj2.model.DateCalendarMonth;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.File;
 
-public class VboxRoot extends Application {
-    public void start(Stage stage){
-        VBox root = new VBox();
-        Scene scene = new Scene(root, 800, 600);
-        File css = new File("src/main/css"+File.separator+"styles.css");
-        scene.getStylesheets().add(css.toURI().toString());
+public class VboxRoot extends VBox
+        implements ConstantCalendar {
 
-        DateCalendar date = new DateCalendar();
-        DateCalendarMonth dateMonth = new DateCalendarMonth(3, 2022);
-        DateCalendarMonth dateMonth2 = new DateCalendarMonth(4, 2022);
-        DateCalendarMonth dateMonth3 = new DateCalendarMonth(5, 2022);
+    public VboxRoot() {
+        super();
+        StackPane stackPaneMonth = new StackPane();
+        ToggleGroup buttonGroup = new ToggleGroup();
+
+        for (int i = 1; i <= 12; i++) {
+            DateCalendarMonth monthCalendar = new DateCalendarMonth(i, 2022);
+
+            TilePane tilePane = new TilePane();
+            tilePane.setPrefColumns(7);
+            tilePane.setPrefRows(monthCalendar.getDates().size() % 7 + 1);
+
+            tilePane.setId("opaque");
+
+            for (String dayShrt : DAY_WEEK_SHRT) {
+                Label dayLabel = new Label(dayShrt);
+                tilePane.getChildren().add(dayLabel);
+            }
+            for (DateCalendar date : monthCalendar.getDates()) {
+
+                ToggleButton buttonDate = new ToggleButton(Integer.toString(date.getDay()));
+
+                buttonDate.setToggleGroup(buttonGroup);
+                tilePane.getChildren().add(buttonDate);
+
+                buttonDate.setUserData(date);
+
+                buttonDate.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                        System.out.println(buttonDate.getUserData().toString());
+                    }
+                });
+
+                if (date.getMonth() != monthCalendar.getMonth()) {
+                    buttonDate.setId("dateHorsMois");
+                }
+                if (date.isToday()) {
+                    buttonDate.setId("today");
+                }
+            }
+            tilePane.setAccessibleText(MONTH[i - 1]);
+            stackPaneMonth.getChildren().add(tilePane);
+        }
 
 
-        Label labelTodayDate = new Label(date.toString());
-        Label labelTomorowDate = new Label(date.tommorowDate().toString());
-        Label labelMonthYears= new Label(dateMonth.getMonth() + " " + dateMonth.getYear());
-
-        VBox boxDates = new VBox();
-        Label labelDatesMonth = new Label(dateMonth.toString() + "\n"+ dateMonth2.toString() + "\n" + dateMonth3);
-
-        ScrollPane scrollPaneDates = new ScrollPane();
-        scrollPaneDates.setContent(boxDates);
-
-        scrollPaneDates.setId("scroll");
-        labelTodayDate.setId("today");
-
-
-        root.getChildren().add(labelTodayDate);
-        root.getChildren().add(labelTomorowDate);
-        boxDates.getChildren().add(labelDatesMonth);
-        root.getChildren().add(labelMonthYears);
-        root.getChildren().add(scrollPaneDates);
-
-        stage.setScene(scene);
-        stage.setTitle("Hello Java FX");
-        stage.show();
+        getChildren().add(stackPaneMonth);
     }
 }
+
+
