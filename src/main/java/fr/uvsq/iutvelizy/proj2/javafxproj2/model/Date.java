@@ -160,6 +160,10 @@ public class Date {
         return year;
     }
 
+    public String getDayString() {
+        return "" + day;
+    }
+
     public Date yesterDate(){
         int lPrevDay = day;
         int lPrevMonth = month;

@@ -60,7 +60,7 @@ public class DateCalendar extends Date
         if(dayOfWeek -1 == -1){
             dayOfWeek = 7;
         }
-        return DAY_WEEK[dayOfWeek - 1] + super.toString() + "\n";
+        return DAY_WEEK[dayOfWeek - 1] + " " + super.toString() + "\n";
     }
     
     public DateCalendar tommorowDate(){

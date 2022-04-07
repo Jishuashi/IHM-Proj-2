@@ -5,3 +5,9 @@
 .toggle-button {
     -fx-background-color: white;
 }
+
+#vbox_style {
+    -fx-border-color: black;
+    -fx-border-insets: 5;
+    -fx-border-width: 3;
+ }
